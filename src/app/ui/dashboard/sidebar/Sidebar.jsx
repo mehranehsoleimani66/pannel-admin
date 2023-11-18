@@ -78,7 +78,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="sticky top-10 w-52">
+    <div className="sticky top-10">
       <div className="flex items-center gap-5 mb-5">
         <Image
           src="/noavatar.png"
@@ -105,6 +105,12 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
+      <div className="flex justify-center items-center text-white hover:bg-[#2e374a] rounded-md">
+        <MdLogout />
+        <button className="p-3 w-full mt-1 mb-1  font-bold text-xs flex items-center gap-3 rounded-xl bg-none border-none">
+          Logout
+        </button>
+      </div>
     </div>
   );
 };
