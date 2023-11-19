@@ -78,7 +78,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="sticky top-10">
+    <div className="fixed top-10">
       <div className="flex items-center gap-5 mb-5">
         <Image
           src="/noavatar.png"
@@ -94,10 +94,8 @@ const Sidebar = () => {
       </div>
       <ul className="list-none">
         {menuItems.map((cat) => (
-          <li
-            className="text-[#b7bac1] font-bold text-xs mt-3 mb-3 "
-            key={cat.title}
-          >
+          // mt-1 mb-3
+          <li className="text-[#b7bac1] font-bold text-xs " key={cat.title}>
             <span>{cat.title}</span>
             {cat.list.map((item) => (
               <MenuLink item={item} key={item.title} />
