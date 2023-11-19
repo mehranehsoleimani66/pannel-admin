@@ -81,21 +81,24 @@ const Sidebar = () => {
     <div className="fixed top-10">
       <div className="flex items-center gap-5 mb-5">
         <Image
-          src="/noavatar.png"
+          src="/avatar.png"
           alt=""
           width={50}
           height={50}
           className="rounded-full object-cover"
         />
         <div className="flex flex-col ">
-          <span className="font-medium">joe dev</span>
+          <span className="font-medium">John Deo</span>
           <span className="text-sm text-[#b7bac1]">administratore</span>
         </div>
       </div>
       <ul className="list-none">
         {menuItems.map((cat) => (
           // mt-1 mb-3
-          <li className="text-[#b7bac1] font-bold text-xs " key={cat.title}>
+          <li
+            className="text-[#b7bac1] font-bold text-xs gap-3"
+            key={cat.title}
+          >
             <span>{cat.title}</span>
             {cat.list.map((item) => (
               <MenuLink item={item} key={item.title} />
