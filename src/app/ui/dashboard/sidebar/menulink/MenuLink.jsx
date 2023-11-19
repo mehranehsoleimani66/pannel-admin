@@ -9,7 +9,7 @@ const MenuLink = ({ item }) => {
     <div>
       <Link
         href={item.path}
-        className={`flex  p-5 items-center gap-3  rounded-xl mt-1 mb-1 ${
+        className={`flex  p-5 items-center gap-3  rounded-xl ${
           pathname === item.path ? "bg-[#2e374a]" : ""
         } hover:bg-[#2e374a]`}
       >
