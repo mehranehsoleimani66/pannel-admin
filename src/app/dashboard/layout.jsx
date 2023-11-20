@@ -5,7 +5,7 @@ import Sidebar from "../ui/dashboard/sidebar/Sidebar";
 const Layout = ({ children }) => {
   return (
     <div className="flex">
-      <div className="flex-0.5   bg-[#182237] pl-5">
+      <div className="flex-0.5   bg-[#182237] pl-5 min-h-[100vh]">
         <Sidebar />
       </div>
       <div className=" flex-3 flex-col">
