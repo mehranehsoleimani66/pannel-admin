@@ -1,6 +1,7 @@
 import Search from "@/app/ui/dashboard/search/Search";
 import Link from "next/link";
 import Image from "next/image";
+import Pagination from "@/app/ui/dashboard/pagination/Pagination";
 const UserPage = () => {
   return (
     <div className="p-5 bg-[#182237] mt-5 ml-5 mr-5 rounded-xl">
@@ -55,6 +56,7 @@ const UserPage = () => {
           </tr>
         </tbody>
       </table>
+      <Pagination />
     </div>
   );
 };
