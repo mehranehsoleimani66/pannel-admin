@@ -44,7 +44,7 @@ const ProductPage = () => {
             <td>2023.08.06</td>
             <td>75</td>
             <td className="flex gap-3">
-              <Link href="/">
+              <Link href="/dashboard/products/test">
                 <button className="bg-[teal] pt-2 pb-3 text-center pr-3 pl-3 rounded-md text-white border-none cursor-pointer">
                   Veiw
                 </button>
