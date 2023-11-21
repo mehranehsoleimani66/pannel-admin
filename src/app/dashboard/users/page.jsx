@@ -44,7 +44,7 @@ const UserPage = () => {
             <td>Admin</td>
             <td>Active</td>
             <td className="flex gap-3">
-              <Link href="/">
+              <Link href="/dashboard/users/test">
                 <button className="bg-[teal] pt-2 pb-3 text-center pr-3 pl-3 rounded-md text-white border-none cursor-pointer">
                   Veiw
                 </button>
