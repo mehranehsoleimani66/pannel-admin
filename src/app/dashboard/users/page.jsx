@@ -6,8 +6,8 @@ import Pagination from "@/app/ui/dashboard/pagination/Pagination";
 
 const UserPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
-  const users = await fetchUsers(q);
-  console.log("mehrane", users);
+  const page = searchParams?.page || 1;
+  const { count, users } = await fetchUsers(q, page);
 
   return (
     <div className="p-5 bg-[#182237] mt-5 ml-5 mr-5 rounded-xl">
@@ -34,13 +34,16 @@ const UserPage = async ({ searchParams }) => {
           {users.map((user) => (
             <tr key={user.id}>
               <td>
-                <div className="flex items-center  gap-5">
+                <div
+                  className="flex items-center 
+                    gap-5"
+                >
                   <Image
-                    src={user.img || "/noavatar.png"}
+                    src={user?.img || "/noavatar.png"}
                     alt=""
                     width={40}
                     height={40}
-                    className="rounded-full "
+                    className="rounded-full object-cover"
                   />
                   {user.username}
                 </div>
@@ -63,7 +66,7 @@ const UserPage = async ({ searchParams }) => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
