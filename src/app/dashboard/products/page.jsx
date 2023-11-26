@@ -1,8 +1,16 @@
-import Search from "@/app/ui/dashboard/search/Search";
-import Link from "next/link";
 import Image from "next/image";
-import Pagination from "@/app/ui/dashboard/pagination/Pagination";
-const ProductPage = () => {
+import Link from "next/link";
+
+import Search from "@/app/ui/dashboard/search/search";
+import Pagination from "@/app/ui/dashboard/pagination/pagination";
+import { fetchProducts } from "@/app/libs/data";
+import { deleteProduct } from "@/app/libs/action";
+
+const ProductPage = async ({ searchParams }) => {
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+  const { count, products } = await fetchProducts(q, page);
+
   return (
     <div className="p-5 bg-[#182237] mt-5 ml-5 mr-5 rounded-xl">
       <div className="flex items-center justify-between">
@@ -26,37 +34,42 @@ const ProductPage = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className="flex items-center  gap-5">
-                <Image
-                  src="/noproduct.jpg"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="rounded-full object-cover"
-                />
-                Iphone
-              </div>
-            </td>
-            <td>Desc</td>
-            <td>$234</td>
-            <td>2023.08.06</td>
-            <td>75</td>
-            <td className="flex gap-3">
-              <Link href="/dashboard/products/test">
-                <button className="bg-[teal] pt-2 pb-3 text-center pr-3 pl-3 rounded-md text-white border-none cursor-pointer">
-                  Veiw
-                </button>
-              </Link>
-              <button className="bg-[crimson] pt-2 pb-2 pr-3 pl-3 text-center rounded-md text-white border-none cursor-pointer">
-                Delet
-              </button>
-            </td>
-          </tr>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>
+                <div className="flex items-center  gap-5">
+                  <Image
+                    src={product?.img || "/noproduct.jpg"}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="rounded-full object-cover"
+                  />
+                  {product.title}
+                </div>
+              </td>
+              <td>{product.desc}</td>
+              <td>${product.price}</td>
+              <td>{product.createdAt?.toString().slice(4, 16)}</td>
+              <td>{product.stock}</td>
+              <td className="flex gap-3">
+                <Link href={`/dashboard/products/${product.id}`}>
+                  <button className="bg-[teal] pt-2 pb-3 text-center pr-3 pl-3 rounded-md text-white border-none cursor-pointer">
+                    Veiw
+                  </button>
+                </Link>
+                <form action={deleteProduct}>
+                  <input type="hidden" name="id" value={product.id} />
+                  <button className="bg-[crimson] pt-2 pb-2 pr-3 pl-3 text-center rounded-md text-white border-none cursor-pointer">
+                    Delet
+                  </button>
+                </form>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
