@@ -1,7 +1,9 @@
+import { addUser } from "@/app/libs/action";
+
 const AddUserPage = () => {
   return (
     <div className="bg-[#182237] p-5 rounded-[10px] m-5">
-      <form action="" className="flex flex-wrap justify-between">
+      <form action={addUser} className="flex flex-wrap justify-between">
         <input
           type="text"
           placeholder="username"
