@@ -3,6 +3,7 @@ import Image from "next/image";
 import { fetchUsers } from "@/app/libs/data";
 import Search from "@/app/ui/dashboard/search/Search";
 import Pagination from "@/app/ui/dashboard/pagination/Pagination";
+import { deleteUser } from "@/app/libs/action";
 
 const UserPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
@@ -43,7 +44,7 @@ const UserPage = async ({ searchParams }) => {
                     alt=""
                     width={40}
                     height={40}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover w-10 h-10"
                   />
                   {user.username}
                 </div>
@@ -58,9 +59,12 @@ const UserPage = async ({ searchParams }) => {
                     Veiw
                   </button>
                 </Link>
-                <button className="bg-[crimson] pt-2 pb-2 pr-3 pl-3 text-center rounded-md text-white border-none cursor-pointer">
-                  Delet
-                </button>
+                <form action={deleteUser}>
+                  <input type="hidden" name="id" value={user.id} />
+                  <button className="bg-[crimson] pt-2 pb-2 pr-3 pl-3 text-center rounded-md text-white border-none cursor-pointer">
+                    Delete
+                  </button>
+                </form>
               </td>
             </tr>
           ))}
