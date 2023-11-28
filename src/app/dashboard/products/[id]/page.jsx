@@ -1,49 +1,55 @@
+import { updateProduct } from "@/app/libs/action";
+import { fetchProduct } from "@/app/libs/data";
 import Image from "next/image";
 
-const SingleProductPage = () => {
+const SingleProductPage = async ({ params }) => {
+  const { id } = params;
+  const product = await fetchProduct(id);
+
   return (
     <div className="flex gap-[50px] mt-5">
       <div className="flex-1 bg-[#182237] p-5 h-max rounded-xl font-bold text-[#b7bac1]">
         <div className="relative w-full h-[300px] overflow-hidden rounded-xl mb-5">
-          <Image src="/noavatar.png" alt="" fill />
+          <Image src={product.img || "/noavatar.png"} alt="" fill />
         </div>
-        Iphone
+        {product.name}
       </div>
       <div className="flex-3 bg-[#182237] p-5 rounded-xl mr-5">
-        <form action="" className="flex flex-col">
+        <form action={updateProduct} className="flex flex-col">
+          <input type="hidden" name="id" value={product.id} />
           <label className="text-xs">Title</label>
           <input
             type="text"
             name="title"
-            placeholder=""
+            placeholder={product.title}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">price</label>
           <input
             type="number"
             name="price"
-            placeholder=""
+            placeholder={product.price}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">stock</label>
           <input
             type="number"
             name="stock"
-            placeholder="56"
+            placeholder={product.stock}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">color</label>
           <input
             type="text"
             name="color"
-            placeholder="red"
+            placeholder={product.color}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">size</label>
           <textarea
             type="number"
             name="size"
-            placeholder="size"
+            placeholder={product.size}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">Cat</label>
