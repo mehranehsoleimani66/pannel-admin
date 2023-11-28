@@ -61,7 +61,7 @@ const ProductPage = async ({ searchParams }) => {
                 <form action={deleteProduct}>
                   <input type="hidden" name="id" value={product.id} />
                   <button className="bg-[crimson] pt-2 pb-2 pr-3 pl-3 text-center rounded-md text-white border-none cursor-pointer">
-                    Delet
+                    Delete
                   </button>
                 </form>
               </td>
