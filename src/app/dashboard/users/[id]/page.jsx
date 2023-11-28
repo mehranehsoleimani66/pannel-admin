@@ -1,34 +1,38 @@
+import { updateUser } from "@/app/libs/action";
+import { fetchUser } from "@/app/libs/data";
 import Image from "next/image";
 
-const SingleUserPage = () => {
+const SingleUserPage = async ({ params }) => {
+  const { id } = params;
+  const user = await fetchUser(id);
   return (
     <div className="flex gap-[50px] mt-5">
       <div className="flex-1 bg-[#182237] p-5 h-max rounded-xl font-bold text-[#b7bac1]">
         <div className="relative w-full h-[300px] overflow-hidden rounded-xl mb-5">
-          <Image src="/noavatar.png" alt="" fill />
+          <Image src={user.img || "/noavatar.png"} alt="" fill />
         </div>
-        John Deo
+        {user.name}
       </div>
       <div className="flex-3 bg-[#182237] p-5 rounded-xl mr-5">
-        <form action="" className="flex flex-col">
+        <form action={updateUser} className="flex flex-col">
           <input
             type="hidden"
             name="id"
-            value=""
+            value={user.id}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">Username</label>
           <input
             type="text"
             name="username"
-            placeholder=""
+            placeholder={user.username}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">Email</label>
           <input
             type="email"
             name="email"
-            placeholder=""
+            placeholder={user.email}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">Password</label>
@@ -41,14 +45,14 @@ const SingleUserPage = () => {
           <input
             type="text"
             name="phone"
-            placeholder=""
+            placeholder={user.phone}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">Address</label>
           <textarea
             type="text"
             name="address"
-            placeholder=""
+            placeholder={user.address}
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           />
           <label className="text-xs">Is Admin?</label>
@@ -57,10 +61,10 @@ const SingleUserPage = () => {
             id="isAdmin"
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           >
-            <option value={true} selected="">
+            <option value={true} selected={user.isAdmin}>
               Yes
             </option>
-            <option value={false} selected="">
+            <option value={false} selected={!user.isAdmin}>
               No
             </option>
           </select>
@@ -70,10 +74,10 @@ const SingleUserPage = () => {
             id="isActive"
             className="p-5 border border-solid border-[#2e374a] rounded bg-[#151c2c] text-white mt-[10px] mb-[10px]"
           >
-            <option value={true} selected="">
+            <option value={true} selected={user.isActive}>
               Yes
             </option>
-            <option value={false} selected="">
+            <option value={false} selected={!user.isActive}>
               No
             </option>
           </select>
