@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
+const connection = {};
+
 export const connectToDB = async () => {
-  const connection = {};
   try {
     if (connection.isConnected) return;
     const db = await mongoose.connect(
@@ -13,9 +14,3 @@ export const connectToDB = async () => {
     throw new Error(error);
   }
 };
-
-// try {
-//     await mongoose.connect('mongodb://127.0.0.1:27017/test');
-//   } catch (error) {
-//     handleError(error);
-//   }
