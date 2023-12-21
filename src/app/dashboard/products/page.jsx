@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { fetchProducts } from "@/app/lib/data";
-import { deleteProduct } from "@/app/lib/actions";
-import Pagination from "@/app/ui/dashboard/pagination/Pagination";
-import Search from "@/app/ui/dashboard/search/Search";
+import { deleteProduct } from "../../lib/actions";
+import Search from "../../ui/dashboard/search/Search";
+import Pagination from "../../ui/dashboard/pagination/Pagination";
+import { fetchProducts } from "../../lib/data";
 
 const ProductPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";

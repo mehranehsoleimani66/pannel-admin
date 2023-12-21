@@ -1,4 +1,4 @@
-import { addProduct } from "@/app/lib/actions";
+import { addProduct } from "@/src/app/lib/actions";
 
 const AddProductPage = () => {
   return (
