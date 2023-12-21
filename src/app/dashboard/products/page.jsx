@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { fetchProducts } from "@/app/libs/data";
-import { deleteProduct } from "@/app/libs/action";
+import { fetchProducts } from "@/app/lib/data";
+import { deleteProduct } from "@/app/lib/actions";
 import Pagination from "@/app/ui/dashboard/pagination/Pagination";
 import Search from "@/app/ui/dashboard/search/Search";
 

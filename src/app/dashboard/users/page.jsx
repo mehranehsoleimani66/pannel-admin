@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { fetchUsers } from "@/app/libs/data";
-import Search from "@/app/ui/dashboard/search/Search";
-import Pagination from "@/app/ui/dashboard/pagination/Pagination";
-import { deleteUser } from "@/app/libs/action";
+
+import { deleteUser } from "../../lib/actions";
+import Search from "../../ui/dashboard/search/Search";
+import Pagination from "../../ui/dashboard/pagination/Pagination";
+import { fetchUsers } from "../../lib/data";
 
 const UserPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";

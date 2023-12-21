@@ -1,6 +1,5 @@
 "use client";
 
-import { Cursor } from "mongoose";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Pagination = ({ count }) => {

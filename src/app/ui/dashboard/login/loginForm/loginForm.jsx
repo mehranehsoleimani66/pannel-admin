@@ -1,11 +1,10 @@
 "use client";
 
-import { authenticate } from "@/app/libs/action";
+import { authenticate } from "@/src/app/lib/actions";
 import { useFormState } from "react-dom";
-
 const LoginForm = () => {
   const [state, formAction] = useFormState(authenticate, undefined);
-
+  console.log("mehiiii");
   return (
     <form
       action={formAction}

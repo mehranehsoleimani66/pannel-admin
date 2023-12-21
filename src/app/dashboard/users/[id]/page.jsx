@@ -1,5 +1,5 @@
-import { updateUser } from "@/app/libs/action";
-import { fetchUser } from "@/app/libs/data";
+import { updateUser } from "@/src/app/lib/actions";
+import { fetchUser } from "@/src/app/lib/data";
 import Image from "next/image";
 
 const SingleUserPage = async ({ params }) => {
